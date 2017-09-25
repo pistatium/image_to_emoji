@@ -5,7 +5,6 @@ import os
 
 from PIL import Image, ImageDraw, ImageFont
 
-
 CANVAS_SIZE = 128
 
 
@@ -19,9 +18,10 @@ def main():
     img = Image.open(filename)
     img = img.resize((int(CANVAS_SIZE * img.width / img.height), CANVAS_SIZE))
     for x in range(int(img.width / img.height) + 1):
-        print(x)
+        save_file = "{}.png".format(x)
         cropped = img.crop((x * CANVAS_SIZE, 0, (x + 1) * CANVAS_SIZE, CANVAS_SIZE))
-        cropped.save(str(x) + ".png")
+        cropped.save(save_file)
+        print(save_file)
 
 if __name__ == '__main__':
     main()
